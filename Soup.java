@@ -1,3 +1,6 @@
+//Name: Abdoul-Aziz Diagne
+//Date: 9/27/2026
+//Description: A program in which a set of characters can be created and manipulated, as well as a company's name being able to be put into said characters
 public class Soup {
     //these are instance variables 
     private String letters;
@@ -28,36 +31,56 @@ public class Soup {
 //below are the functions you'll be writing.
 
     //adds a word to the pool of letters known as "letters"
+    // expected input is a string called "word" which would be the word the user wants to add
+    // no return, per the void, just changes the variable letters
     public void add(String word){
-
+        letters += word.substring(0);
     }
 
 
     //Use Math.random() to get a random character from the letters string and return it.
+    // variable "letters" must not be empty or null
+    // returns a random letter as a char
     public char randomLetter(){
-        return 'a';
+            char letter = letters.charAt((int)(Math.random()*letters.length()));
+            return letter;
     }
 
 
     //returns the letters currently stored with the company name placed directly in the center of all
     //the letters
+    // no prerequisites
+    // returns String that contains original string with the company put in the middle 
     public String companyCentered(){
-        return "";
+       String charactersWithCompany = letters.substring(0, letters.length()/2) + company + letters.substring(letters.length()/2); 
+        return charactersWithCompany;
     }
 
 
     //should remove the first available vowel from letters. If there are no vowels this method has no effect.
+    // no prerequisites
+    // returns nothing, but changes the string "letters" so it lacks the first vowel available
     public void removeFirstVowel(){
-        
+    letters = letters.replaceFirst("[aeiouAEIOU]", "");
     }
 
     //should remove "num" letters from a random spot in the string letters. You may assume num never exceeds the length of the string.
+    // requires String "letters" to contain at least the amount of letters 'num' is input as
+    // returns nothing, simply removes 'num' letters and adjusts original string
     public void removeSome(int num){
+        try{
+        int startingIndex = (int)(Math.random()*letters.length());
+        String lettersToRemove = letters.substring(startingIndex, startingIndex + num);
+        letters =  letters.replaceAll(lettersToRemove, "");
+        }
+        catch(Exception e) {
 
+        }
     }
-
     //should remove the word "word" from the string letters. If the word is not found in letters then it does nothing.
+    // input, which is a String called word
+    // returns nothing, simply removes indicated word from the "letters" string
     public void removeWord(String word){
-        
+        letters = letters.replaceAll(word, "");
     }
 }
