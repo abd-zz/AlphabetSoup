@@ -69,7 +69,7 @@ public class Soup {
     // postcondition: returns nothing, simply removes 'num' letters and adjusts original string
     public void removeSome(int num){
         try{
-        int startingIndex = (int)(Math.random()*letters.length());
+        int startingIndex = (int)(Math.random()*(letters.length()-num));
         String lettersToRemove = letters.substring(startingIndex, startingIndex + num);
         letters =  letters.replaceAll(lettersToRemove, "");
         }
