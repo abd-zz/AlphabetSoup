@@ -71,7 +71,7 @@ public class Soup {
         try{
         int startingIndex = (int)(Math.random()*(letters.length()-num));
         String lettersToRemove = letters.substring(startingIndex, startingIndex + num);
-        letters =  letters.replaceAll(lettersToRemove, "");
+        letters =  letters.replaceFirst(lettersToRemove, "");
         }
         catch(Exception e) {
 
